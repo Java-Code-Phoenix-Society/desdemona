@@ -1,0 +1,23 @@
+<project name="Desdemona" default="desdemonajar">
+    <property name="rootdir" value="../../.."/>
+
+    <target name="desdemonajar" depends="desdemonaclass"
+        description="Creates desdemona.jar file">
+        <jar jarfile="desdemona.jar" manifest="desdemona.mf">
+            <fileset dir="${rootdir}">
+                <include name="com/huffmancoding/desdemona/*.java" />
+                <include name="com/huffmancoding/desdemona/*.class" />
+                <include name="com/huffmancoding/desdemona/readme.html" />
+                <include name="com/huffmancoding/desdemona/build.xml" />
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="desdemonaclass" description="Compiles Desdemona source code">
+        <javac srcdir="." destdir="${rootdir}" deprecation="on">
+            <compilerarg value="-Xlint:unchecked"/>
+            <include name="*.java"/>
+        </javac>
+    </target>
+
+</project>
